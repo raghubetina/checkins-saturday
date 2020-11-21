@@ -11,4 +11,6 @@
 #  user_id     :integer
 #
 class Flight < ApplicationRecord
+  belongs_to(:user)
+  validates(:departs_at, { :presence => true })
 end

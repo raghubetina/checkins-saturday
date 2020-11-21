@@ -16,14 +16,6 @@
 
     <form action="/insert_flight" method="post">
       <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id">
-      </div>
-
-      <div>
         <label for="departs_at_box">
           Departs at
         </label>
@@ -39,12 +31,6 @@
         <input type="text" id="description_box" name="query_description">
       </div>
 
-      <div>
-        <input type="checkbox" id="alert_sent_box" name="query_alert_sent" value="1">
-
-        <label for="alert_sent_box">Alert sent</label>
-      </div>
-
       <button>
         Create flight
       </button>
@@ -57,14 +43,6 @@
   <div>
     <table>
       <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          User
-        </th>
-
         <th>
           Departs at
         </th>
@@ -82,23 +60,11 @@
         </th>
 
         <th>
-          Updated at
-        </th>
-
-        <th>
         </th>
       </tr>
 
       <% @list_of_flights.each do |a_flight| %>
       <tr>
-        <td>
-          <%= a_flight.id %>
-        </td>
-
-        <td>
-          <%= a_flight.user_id %>
-        </td>
-
         <td>
           <%= a_flight.departs_at %>
         </td>
@@ -113,9 +79,6 @@
 
         <td>
           <%= time_ago_in_words(a_flight.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_flight.updated_at) %> ago
         </td>
 
         <td>

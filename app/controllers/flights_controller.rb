@@ -1,6 +1,8 @@
 class FlightsController < ApplicationController
   def index
-    matching_flights = Flight.all
+    # matching_flights = Flight.where({ :user_id => @current_user.id })
+    
+    matching_flights = @current_user.flights
 
     @list_of_flights = matching_flights.order({ :created_at => :desc })
 
@@ -19,10 +21,9 @@ class FlightsController < ApplicationController
 
   def create
     the_flight = Flight.new
-    the_flight.user_id = params.fetch("query_user_id")
+    the_flight.user_id = @current_user.id
     the_flight.departs_at = params.fetch("query_departs_at")
     the_flight.description = params.fetch("query_description")
-    the_flight.alert_sent = params.fetch("query_alert_sent", false)
 
     if the_flight.valid?
       the_flight.save

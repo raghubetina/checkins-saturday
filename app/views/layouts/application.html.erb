@@ -23,23 +23,31 @@
         </a>
       </li>
 
-      <li>
-        <a href="/user_sign_up">
-          Sign up
-        </a>
-      </li>
+      <% if @current_user == nil %>
+        <li>
+          <a href="/user_sign_up">
+            Sign up
+          </a>
+        </li>
 
-      <li>
-        <a href="/user_sign_in">
-          Sign in
-        </a>
-      </li>
+        <li>
+          <a href="/user_sign_in">
+            Sign in
+          </a>
+        </li>
+      <% else %>
+        <li>
+          <a href="/edit_user_profile">
+            Edit profile
+          </a>
+        </li>
 
-      <li>
-        <a href="/edit_user_profile">
-          Edit profile
-        </a>
-      </li>
+        <li>
+          <a href="/user_sign_out">
+            Sign out
+          </a>
+        </li>
+      <% end %>
     </ul>
 
     <p style="color: red"><%= alert %></p>

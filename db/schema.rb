@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_21_202046) do
+ActiveRecord::Schema.define(version: 2020_11_21_202128) do
+
+  create_table "flights", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "departs_at"
+    t.string "description"
+    t.boolean "alert_sent", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"

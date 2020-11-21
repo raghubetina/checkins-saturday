@@ -1,0 +1,117 @@
+<div>
+  <div>
+    <h1>
+      Flight #<%= @the_flight.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/flights">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_flight/<%= @the_flight.id %>">
+          Delete flight
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_flight.user_id %>
+      </dd>
+
+      <dt>
+        Departs at
+      </dt>
+      <dd>
+        <%= @the_flight.departs_at %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_flight.description %>
+      </dd>
+
+      <dt>
+        Alert sent
+      </dt>
+      <dd>
+        <%= @the_flight.alert_sent %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_flight.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_flight.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit flight
+    </h2>
+
+    <form action="/modify_flight/<%= @the_flight.id %>"  method="post" >
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_flight.user_id %>">
+      </div>
+
+      <div>
+        <label for="departs_at_box">
+          Departs at
+        </label>
+
+        <input type="datetime-local" id="departs_at_box" name="query_departs_at"
+         value="<%= @the_flight.departs_at %>">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="query_description" value="<%= @the_flight.description %>">
+      </div>
+
+      <div>
+        <input type="checkbox" id="alert_sent_box" name="query_alert_sent" value="1" <%= "checked" if @the_flight.alert_sent %>>
+
+        <label for="alert_sent_box">
+            Alert sent
+        </label>
+      </div>
+
+      <button>
+        Update flight
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

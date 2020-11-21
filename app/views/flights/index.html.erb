@@ -39,6 +39,7 @@
 </div>
 
 <hr>
+<h2>Upcoming</h2>
 <div>
   <div>
     <table>
@@ -63,7 +64,62 @@
         </th>
       </tr>
 
-      <% @list_of_flights.each do |a_flight| %>
+      <% @upcoming_flights.each do |a_flight| %>
+      <tr>
+        <td>
+          <%= a_flight.departs_at %>
+        </td>
+
+        <td>
+          <%= a_flight.description %>
+        </td>
+
+        <td>
+          <%= a_flight.alert_sent %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_flight.created_at) %> ago
+        </td>
+
+        <td>
+          <a href="/flights/<%= a_flight.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
+<h2>Past</h2>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          Departs at
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          Alert sent
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @past_flights.each do |a_flight| %>
       <tr>
         <td>
           <%= a_flight.departs_at %>

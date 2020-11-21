@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post("/insert_flight", { :controller => "flights", :action => "create" })
           
   # READ
+  get("/", { :controller => "flights", :action => "index" })
   get("/flights", { :controller => "flights", :action => "index" })
   
   get("/flights/:path_id", { :controller => "flights", :action => "show" })
